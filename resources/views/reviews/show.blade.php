@@ -49,8 +49,8 @@
               </div>
               
 
-              <div class="col-9">
-                <p class="mb-2"><strong>{{ $review->user->name }}</strong></p>
+              <div class="col-9" >
+                <h3 style="line-height:170px;"><strong>{{ $review->user->name }}</strong></h3>
                 
               </div>
               
@@ -60,57 +60,57 @@
           <!--Section: Author-->
 
           <!--Section: Comments-->
-          <section class="border-bottom mb-3">
-            <p class="text-center"><strong>Comments: 3</strong></p>
+          <!--<section class="border-bottom mb-3">-->
+          <!--  <p class="text-center"><strong>Comments: 3</strong></p>-->
 
             <!-- Comment -->
-            <div class="row mb-4">
-              <div class="col-2">
-                <img src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-                  class="img-fluid shadow-1-strong rounded-5" alt="" />
-              </div>
+          <!--  <div class="row mb-4">-->
+          <!--    <div class="col-2">-->
+          <!--      <img src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"-->
+          <!--        class="img-fluid shadow-1-strong rounded-5" alt="" />-->
+          <!--    </div>-->
 
-              <div class="col-10">
-                <p class="mb-2"><strong>Marta Dolores</strong></p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio est ab iure
-                  inventore dolorum consectetur? Molestiae aperiam atque quasi consequatur aut?
-                  Repellendus alias dolor ad nam, soluta distinctio quis accusantium!
-                </p>
-              </div>
-            </div>
+          <!--    <div class="col-10">-->
+          <!--      <p class="mb-2"><strong>Marta Dolores</strong></p>-->
+          <!--      <p>-->
+          <!--        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio est ab iure-->
+          <!--        inventore dolorum consectetur? Molestiae aperiam atque quasi consequatur aut?-->
+          <!--        Repellendus alias dolor ad nam, soluta distinctio quis accusantium!-->
+          <!--      </p>-->
+          <!--    </div>-->
+          <!--  </div>-->
 
           <!--Section: Reply-->
-          <section>
-            <p class="text-center"><strong>Leave a reply</strong></p>
+          <!--<section>-->
+          <!--  <p class="text-center"><strong>Leave a reply</strong></p>-->
 
-            <form>
+          <!--  <form>-->
               <!-- Name input -->
-              <div class="form-outline mb-4">
-                <input type="text" id="form4Example1" class="form-control" />
-                <label class="form-label" for="form4Example1">Name</label>
-              </div>
+          <!--    <div class="form-outline mb-4">-->
+          <!--      <input type="text" id="form4Example1" class="form-control" />-->
+          <!--      <label class="form-label" for="form4Example1">Name</label>-->
+          <!--    </div>-->
 
               <!-- Email input -->
-              <div class="form-outline mb-4">
-                <input type="email" id="form4Example2" class="form-control" />
-                <label class="form-label" for="form4Example2">Email address</label>
-              </div>
+          <!--    <div class="form-outline mb-4">-->
+          <!--      <input type="email" id="form4Example2" class="form-control" />-->
+          <!--      <label class="form-label" for="form4Example2">Email address</label>-->
+          <!--    </div>-->
 
               <!-- Message input -->
-              <div class="form-outline mb-4">
-                <textarea class="form-control" id="form4Example3" rows="4"></textarea>
-                <label class="form-label" for="form4Example3">Text</label>
-              </div>
+          <!--    <div class="form-outline mb-4">-->
+          <!--      <textarea class="form-control" id="form4Example3" rows="4"></textarea>-->
+          <!--      <label class="form-label" for="form4Example3">Text</label>-->
+          <!--    </div>-->
 
              
 
               <!-- Submit button -->
-              <button type="submit" class="btn btn-primary btn-block mb-4">
-                Publish
-              </button>
-            </form>
-          </section>
+          <!--    <button type="submit" class="btn btn-primary btn-block mb-4">-->
+          <!--      Publish-->
+          <!--    </button>-->
+          <!--  </form>-->
+          <!--</section>-->
           <!--Section: Reply-->
         </div>
         <!--Grid column-->

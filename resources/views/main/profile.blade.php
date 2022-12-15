@@ -23,12 +23,12 @@
     </div>
   </div>
 </div>
-<div class="container rounded mt-5 mb-5 pt-5" >
+<div class="container rounded mb-5 pt-5" >
 
 
 
 
-<div class="container rounded bg-white mt-5 mb-5 pt-5" style="height: 800px; display:flex; align-items:center; justify-content:center;">
+<div class="container rounded bg-white mb-5 pt-5" style="height: 800px; display:flex; align-items:center; justify-content:center;">
     <div class="row">
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
@@ -80,11 +80,10 @@
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center experience">
                     <span>Log Out</span>
-                    <form action="{{ url('logout') }}" method="post">
+                    <form action="{{ url('logout') }}" method="get">
                         @csrf
                          <button class="btn btn-primary profile-button" type="submit">Log Out</button>
                     </form>
-                    
                 </div>
             </div>
         </div>
@@ -92,6 +91,42 @@
 </div>
 </div>
 </div>
+
+@if($user->reviews)
+<div class="container rounded mb-5>
+<div class="album py-5 mt-5">
+        <div class="container">
+          <div class="row">
+        @foreach($user->reviews as $review)  
+        
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow" style="height: 400px">
+                <img class="card-img-top h-50" src="data:image/jpeg;base64,{{ $review->thumbnail }}">
+                <div class="card-body">
+                  <h4 class="card-text text-dark">{{ $review->name}}</h4>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="{{ url('review/' . $review->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                        <a href="{{ url('review/' . $review->id . '/edit')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Edit</button></a>
+                      </div>
+                    <h6 class="text-muted">{{ $review->type}}</h6>
+                  </div>
+                  <h6 class="text-muted mt-3">{{ $review->user->name}}</h6>
+                        <a href="javascript: void(0);" 
+                                   data-name="{{ $review->name }}"
+                                   data-url="{{ url('review/' . $review->id) }}"
+                                   data-toggle="modal"
+                                   data-target="#modalDelete"><button type="button" class="btn btn-sm btn-danger mt-3">Delete</button></a>
+                   <small class="text-muted " style="float:right; line-height:60px">{{ $review->updated_at}}</small>
+                </div>
+              </div>
+            </div>
+            @endforeach
+          </div>
+        </div>
+      </div>
+      </div>
+      @endif
 @endsection
 
 @section('scripts')

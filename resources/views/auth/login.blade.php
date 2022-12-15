@@ -37,17 +37,17 @@
 
               <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
               
-                 <div class="row mb-3 mt-5">
-                    <div class="col-md-6 offset-md-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                <!-- <div class="row mb-3 mt-5">-->
+                <!--    <div class="col-md-6 offset-md-3">-->
+                <!--        <div class="form-check">-->
+                <!--            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>-->
     
-                            <label class="form-check-label" for="remember">
-                                {{ __('Remember Me') }}
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                <!--            <label class="form-check-label" for="remember">-->
+                <!--                {{ __('Remember Me') }}-->
+                <!--            </label>-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--</div>-->
                 <div>
                   <p class="mb-0">Don't have an account? <a href="{{ url('register')}}" class="text-white-50 fw-bold">Sign Up</a>
                   </p>

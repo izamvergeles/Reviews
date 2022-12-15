@@ -69,17 +69,17 @@
             </div>
           </div>
         </div>
+        
+        
+        @if(session('message'))
+            <div class="alert alert-primary">{{ session('message') }}</div>
+        @endif
       </header>
-       
         @yield('modalContent')
         <main role="main">
             <div>
-                @error('message')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-                @if(session('message'))
-                    <div class="alert alert-danger">{{ session('message') }}</div>
-                @endif
+              
+                
                 @yield('content')
             </div>
         </main>

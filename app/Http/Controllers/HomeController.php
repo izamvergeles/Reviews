@@ -21,8 +21,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this-> middleware('auth', ['except' => ['index']]);
-        $this-> middleware('verified', ['except' => ['index', 'profile']]);
+        $this-> middleware('auth', ['except' => ['index', 'logout']]);
+        $this-> middleware('verified', ['except' => ['index', 'profile', 'logout', 'destroy']]);
     }
 
     /**
@@ -46,21 +46,31 @@ class HomeController extends Controller
     public function post()
     {
         $reviews = Review::orderBy('created_at', 'desc')->get();
-         return view('reviews.index', ['reviews' => $reviews]);
+        $type = null;
+         return view('reviews.index', ['reviews' => $reviews, 'type' => $type]);
+        
+    }
+    public function logout()
+    {
+        Auth::logout();
+        $message = 'You have logged out';
+        return redirect('/')->with('message', $message);
         
     }
     
     public function films()
     {
         $reviews = Review::where('type', 'films')->orderBy('created_at', 'desc')->get();
-        return view('reviews.index', ['reviews' => $reviews]);
+        $type = 'Films';
+        return view('reviews.index', ['reviews' => $reviews, 'type' => $type]);
     }
     
     public function records()
     {
         
         $reviews = Review::where('type', 'record')->orderBy('created_at', 'desc')->get();
-        return view('reviews.index', ['reviews' => $reviews]);
+        $type = 'Records';
+        return view('reviews.index', ['reviews' => $reviews, 'type' => $type]);
     }
     
     
@@ -68,7 +78,8 @@ class HomeController extends Controller
     {
         
         $reviews = Review::where('type', 'book')->orderBy('created_at', 'desc')->get();
-        return view('reviews.index', ['reviews' => $reviews]);
+        $type = 'Books';
+        return view('reviews.index', ['reviews' => $reviews, 'type' => $type]);
     }
     
     public function update(Request $request, User $user)
@@ -76,16 +87,17 @@ class HomeController extends Controller
         try{
             if($user->id == Auth::user()->id){
                 $user->update($request->all());
-                $papa = "el papa de tomas";
+                $message = 'The user ' . $user->name . ' has been updated';
             }else{
+                $message = 'The user ' . $user->name . ' could not be updated';
                 return redirect('/profile');
             }
         }catch(Exception $e) {
             return back()
                     ->withInput()
-                    ->withErrors(['update' => 'An unexpected error occurred while updating.']);
+                    ->withErrors(['update' => 'An unexpected error occurred while updating user.']);
         }
-                return redirect('/profile');
+                return redirect('/profile')->with('message', $message);
     }
     public function destroy(User $user)
     {
@@ -99,15 +111,17 @@ class HomeController extends Controller
                 };
                 $user->delete();
                 Auth::logout();
+                 $message = 'The user ' . $user->name . ' has been removed with all the consequences';
             }else{
-                return redirect('/profile');
+                $message = 'The user could not be deleted ';
+                return redirect('/profile')->with('message', $message);
             }
         } catch(\Exception $e) {
             return back()
                     ->withInput()
-                    ->withErrors(['update' => 'An unexpected error occurred while updating.']);
+                    ->withErrors(['update' => 'An unexpected error occurred while deleting user.']);
         }
-        return redirect('/');
+        return redirect('/')->with('message', $message);
     }
     
     

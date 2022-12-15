@@ -15,7 +15,9 @@
             <p>DiscLove is the best social website where you can share everything that makes you alive.Share and enjoy what you like the most.</p>
           </div>
           @if(Auth::user())
+            @if(Auth::user()->hasVerifiedEmail())
             <div class="second-button"><a href="{{ url('review/create')}}">Create Post</a></div> 
+            @endif
           @endif
           
         </div>

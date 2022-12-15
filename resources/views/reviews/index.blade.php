@@ -24,6 +24,13 @@
   </div>
 </div>
 <div class="container rounded mt-5 mb-5 pt-5" >
+@if($type)
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">{{ $type }}</h1>
+    </div>
+  </div>
+@endif
 
 <div class="album py-5 mt-5">
         <div class="container">
@@ -33,7 +40,7 @@
               <div class="card mb-4 box-shadow" style="height: 400px">
                 <img class="card-img-top h-50" src="data:image/jpeg;base64,{{ $review->thumbnail }}">
                 <div class="card-body">
-                  <h5 class="card-text text-dark">{{ $review->name}}</h5>
+                  <h4 class="card-text text-dark">{{ $review->name}}</h4>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <a href="{{ url('review/' . $review->id)}}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
@@ -43,7 +50,8 @@
                         @endif
                       @endif
                       </div>
-                    <small class="text-muted">{{ $review->updated_at}}</small>
+                      <h6 class="text-muted">{{ $review->type}}</h6>
+                    
                   </div>
                   <h6 class="text-muted mt-3">{{ $review->user->name}}</h6>
                   @if(Auth::user())
@@ -57,7 +65,9 @@
                                    data-target="#modalDelete"><button type="button" class="btn btn-sm btn-danger mt-3">Delete</button></a>
                         @endif
                       @endif
+                      <small class="text-muted " style="float:right; line-height:60px">{{ $review->updated_at}}</small>
                 </div>
+                
               </div>
             </div>
             @endforeach

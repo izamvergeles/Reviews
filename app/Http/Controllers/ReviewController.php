@@ -64,12 +64,13 @@ class ReviewController extends Controller
             $imgarray = $request->images;
             $imagedata->storeimg($imgarray, $review->id);
             
-            return redirect('post/' . $type);
+            $message = 'The review ' . $request->name . ' has been successfully saved and published';
          } catch(\Exception $e) {
              return back()
                         ->withInput()
-                        ->withErrors(['message' => 'An unexpected error occurred while updating.']);
+                        ->withErrors(['message' => 'An unexpected error occurred while saving.']);
          }
+         return redirect('post/' . $type)->with('message', $message);
 
         
      }
@@ -129,15 +130,17 @@ class ReviewController extends Controller
                 $imagedata->storeimg($imgarray, $review->id);
             }
             $review->save();
+            $message = 'The review ' . $request->name .' has been successfully updated';
              }else{
-                 return redirect('/');
+                 $message = 'The review could not be updated';
+                 return redirect('/')->with('message', $message);
              }
 
-            return redirect('review/' . $review->id);
+            return redirect('review/' . $review->id)->with('message', $message);
         } catch(Exception $e) {
             return back()
                     ->withInput()
-                    ->withErrors(['update' => 'An unexpected error occurred while updating.']);
+                    ->withErrors(['update' => 'An unexpected error occurred while updating review.']);
         }
         
     }
@@ -160,12 +163,15 @@ class ReviewController extends Controller
                 $message = 'The review ' . $review->name . ' has been removed.';
             }
             else{
-                return redirect('/');
+                $message = 'The review could not be deleted';
+                return redirect('/')->with('message', $message);
             }
-            
+            return redirect('post')->with('message', $message);
         } catch(\Exception $e) {
-            $message = 'The review ' .  $review->name . ' has not been removed.';
+            return back()
+                    ->withInput()
+                    ->withErrors(['update' => 'An unexpected error occurred while deleting review.']);
         }
-        return redirect('post')->with('message', $message);
+        
     }
 }

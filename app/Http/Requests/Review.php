@@ -1,0 +1,63 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class Review extends FormRequest
+{
+    function attributes() {
+        return [
+            'name' => 'nombre de la persona',
+            'type' => 'apellidos de la persona',
+            'description' => 'telefono de la persona',
+            
+        ];
+    }
+    
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    function messages() {
+        $max = 'The field :attribute cannot have more than :max caracteres';
+        $min = 'The field :attribute cannot have less than :min characters';
+        $required = 'The field :attribute is required';
+        $value = 'The field :attribute only can be book, record or films';
+
+        return [
+            'name.max'      => $max,
+            'name.min'      => $min,
+            'name.required' => $required,
+            
+            'type.value'      => $value,
+
+
+            'description.max'      => $max,
+            'description.min'      => $min,
+            'description.required' => $required,
+
+        ];
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, mixed>
+     */
+    public function rules()
+    {
+        return [
+            'name' => 'required|min:5|max:30',
+            'type' => 'value:book|value:record|value:films',
+            'description' => 'required|min:10|max:3000',
+            
+        ];
+    }
+}

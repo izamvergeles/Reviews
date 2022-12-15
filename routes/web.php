@@ -25,6 +25,7 @@ Auth::routes(['verify' => true]);
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 Route::get('/post', [App\Http\Controllers\HomeController::class, 'post'])->name('post');
+Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
 
 
 Route::get('/post/films', [App\Http\Controllers\HomeController::class, 'films'])->name('films');
