@@ -76,6 +76,7 @@ class HomeController extends Controller
         try{
             if($user->id == Auth::user()->id){
                 $user->update($request->all());
+                $papa = "el papa de tomas";
             }else{
                 return redirect('/profile');
             }
