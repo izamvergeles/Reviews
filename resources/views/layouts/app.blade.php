@@ -43,7 +43,7 @@
             <div class="col-12">
               <nav class="main-nav">
                  <!--***** Logo Start ***** -->
-                <a href="index.html" class="logo">
+                <a href="{{ url('/'); }}" class="logo">
                   <img src="assets/images/logo.svg" alt="" style="max-width: 60px;">
                 </a>
                  <!--***** Logo End ***** -->

@@ -52,7 +52,7 @@
               
               <!--Fallo de seguridad, hay q ver si las imagenes que se intentan borrar son de esta review y despues eliminarlas-->
               <div class="form-outline form-white mb-4">
-                <input class="form-control" type="file" name="images[]" id="images" multiple/>
+                <input class="form-control" type="file" name="images[]" id="images" accept="image/jpeg" multiple/>
                 <input class="form-control" type="hidden" name="delimages[]" id="delimages" multiple/> 
                 <label class="form-label text-danger" for="typeEmailX">DELETE</label>
                 @foreach($images as $image)

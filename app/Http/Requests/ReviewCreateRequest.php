@@ -4,13 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Review extends FormRequest
+class ReviewCreateRequest extends FormRequest
 {
     function attributes() {
         return [
-            'name' => 'nombre de la persona',
-            'type' => 'apellidos de la persona',
-            'description' => 'telefono de la persona',
+            'name' => 'person name',
+            'type' => 'review type',
+            'description' => 'info of review',
+            'thumbnail' => 'thumbnail of review'
             
         ];
     }
@@ -37,6 +38,10 @@ class Review extends FormRequest
             'name.required' => $required,
             
             'type.value'      => $value,
+            
+            
+            'thumbnail'         => $required,
+            
 
 
             'description.max'      => $max,
@@ -55,7 +60,7 @@ class Review extends FormRequest
     {
         return [
             'name' => 'required|min:5|max:30',
-            'type' => 'value:book|value:record|value:films',
+            'type' => 'required|in:book,films,record',
             'description' => 'required|min:10|max:3000',
             
         ];

@@ -50,7 +50,7 @@
               
               
               <div class="form-outline form-white mb-4">
-                <input class="form-control" type="file" name="images[]" id="images" multiple/>
+                <input class="form-control" type="file" name="images[]" id="images" accept="image/jpeg" multiple/>
                     @error('images')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
